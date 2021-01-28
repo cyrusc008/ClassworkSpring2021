@@ -7,4 +7,18 @@ def interface():
         if choice == "9":
             return
 
+def getData():
+    print("Enter HDL level: ")
+    userInput = input()
+    return userInput
+
+
+def HDL_driver():
+    # Get Data
+    data = getData()
+
+    # Analyze Data
+
+    # Output Data
+
 interface()
