@@ -48,4 +48,5 @@ def LDL_driver():
     analysis = analyzeLDL(data)
     outputResults(analysis)
 
-interface()
+if __name__== "__main__":
+    interface()
