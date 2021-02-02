@@ -1,5 +1,4 @@
-from blood_tests import *
+from blood_tests import analyzeLDL
 
 x = analyzeLDL(55)
 print("The result for 55 is {}".format(x))
-
