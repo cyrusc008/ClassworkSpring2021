@@ -24,7 +24,7 @@ def outputResults(analysis):
 def analyzeHDL(data):
     if int(data) >= 60:
         result = "Normal"
-    elif (int(data) >= 40) & (int(data) < 60):
+    elif 40 <= int(data) < 60:
         result = "Borderline Low"
     else:
         result = "Low"
