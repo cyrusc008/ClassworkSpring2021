@@ -23,11 +23,12 @@ def outputResults(analysis):
 
 def analyzeHDL(data):
     if int(data) >= 60:
-        print("Normal")
+        result = "Normal"
     elif (int(data) >= 40) & (int(data) < 60):
-        print("Borderline Low")
+        result = "Borderline Low"
     else:
-        print("Low")
+        result = "Low"
+    return result
 
 def analyzeLDL(data):
     if int(data) < 130:
@@ -48,4 +49,5 @@ def LDL_driver():
     analysis = analyzeLDL(data)
     outputResults(analysis)
 
-interface()
+if __name__ == "__main__":
+    interface()
