@@ -1,13 +1,8 @@
-from blood_tests import analyzeHDL
+import pytest
 
-def test_analyzeHDL1():
-    value = analyzeHDL(70)
-    assert value == "Normal"
-
-def test_analyzeHDL2():
-    value = analyzeHDL(50)
-    assert value == "Borderline Low"
-
-def test_analyzeHDL3():
-    value = analyzeHDL(20)
-    assert value == "Low"
+@pytest.mark.parametrize("value, expected", [(70, "Normal"), 
+                        (50, "Borderline Low"), (20, "Low")])
+def test_analyzeHDL(value, expected):
+    from blood_tests import analyzeHDL
+    value = analyzeHDL(value)
+    assert value == expected
