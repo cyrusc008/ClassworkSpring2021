@@ -2,12 +2,13 @@ def create_database_entry(name, id_no, age):
     new_patient = [name, id_no, age, []]
     return new_patient
 
+
 def print_directory(db):
     other_data = ["Room 2", "Room 3", "Room 4", "Room 5"]
     for i, patient in enumerate(db):
         print(i)
-        print("Name: {}, id: {}, age: {}".format(patient[0], 
-                                                 patient[1], 
+        print("Name: {}, id: {}, age: {}".format(patient[0],
+                                                 patient[1],
                                                  patient[2]))
         print("Patient is in {}".format(other_data[i]))
 
@@ -34,6 +35,7 @@ def main():
     db.append(create_database_entry("David Dinkins", 4, 33))
     add_test_result(3, db, "HDL", 65)
     add_test_result(3, db, "LDL", 80)
+
 
 if __name__ == "__main__":
     main()
