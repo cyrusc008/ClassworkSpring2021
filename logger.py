@@ -1,4 +1,5 @@
 import logging
+import datetime
 
 
 def fibonacci(fib_list):
@@ -18,6 +19,7 @@ def main():
     print(answer)
 
 if __name__ == "__main__":
+    log_name = "fiblog_{}.txt".format(datetime.time())
     logging.basicConfig(filename="fig.log", level=logging.INFO,
                         filemode="w")
     main()
