@@ -13,21 +13,26 @@ def interface():
         elif choice == "2":
             LDL_driver()
 
+
 def getData():
     print("Enter HDL/LDL level: ")
     userInput = input()
     return userInput
 
+
 def outputResults(analysis):
     print(analysis)
 
+
 def analyzeHDL(data):
     if int(data) >= 60:
-        print("Normal")
-    elif (int(data) >= 40) & (int(data) < 60):
-        print("Borderline Low")
+        result = "Normal"
+    elif 40 <= int(data) < 60:
+        result = "Borderline Low"
     else:
-        print("Low")
+        result = "Low"
+    return result
+
 
 def analyzeLDL(data):
     if int(data) < 130:
@@ -39,13 +44,17 @@ def analyzeLDL(data):
     else:
         return "Very High"
 
+
 def HDL_driver():
     data = getData()
     analyzeHDL(data)
+
 
 def LDL_driver():
     data = getData()
     analysis = analyzeLDL(data)
     outputResults(analysis)
 
-interface()
+
+if __name__ == "__main__":
+    interface()
