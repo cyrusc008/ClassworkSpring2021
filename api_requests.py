@@ -22,5 +22,20 @@ def students():
     print(data["message"])
 
 
+def blood_match():
+    r = requests.get("http://vcm-7631.vm.duke.edu:5002/get_patients/ctt14")
+    data = r.json()
+    ids = [data["Donor"], data["Recipient"]]
+    for index, idx in enumerate(ids):
+        g = requests.get(
+            "http://vcm-7631.vm.duke.edu:5002/get_blood_type/{}".format(idx))
+        print(g.text)
+    my_info = {"Name": "ctt14", "Match": "Yes"}
+    a = requests.post(
+        "http://vcm-7631.vm.duke.edu:5002/match_check", json=my_info)
+    print(a.status_code)
+    print(a.text)
+
+
 if __name__ == "__main__":
-    students()
+    blood_match()
