@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
 import logging
+from pymodm import connect
+from patient_class import Patient
 logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 
-db = list()
 db_test = list()
 
 
@@ -13,13 +14,12 @@ db_test = list()
 #     return "The server is active."
 
 def add_patient_to_db(name, id_info, blood_type):
-    new_patient = {"name": name,
-                   "id": id_info,
-                   "blood_type": blood_type,
-                   "test": list()}
-    db.append(new_patient)
-    logging.info(new_patient)
-    return True
+    new_patient = Patient(name = name,
+                          id_no = id_info,
+                          blood_type = blood_type)
+    saved_patient = new_patient.save()
+    logging.info("Added new patient id {} to database").format(svaed_patient.id_no)
+    return saved_patient
 
 
 def add_test_to_db(id_info, test_name, test_result):
@@ -33,8 +33,9 @@ def add_test_to_db(id_info, test_name, test_result):
 
 
 def init_server():
-    add_patient_to_db("Ann Ables", 101, "A+")
-    add_patient_to_db("Bob Boyles", 102, "B-")
+    print("Connecting to MongoDB")
+    connect("mongodb+srv://cyrusc008:PnX5fWFgyc9S0KLo@bme547.idiaq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    print("Connected to MongoDB")
 
 
 @app.route("/new_patient", methods=["POST"])
